@@ -1,0 +1,111 @@
+/* Main container for the post details */
+.post-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    word-wrap: break-word; /* Prevents long text from overflowing */
+}
+
+/* Ensure any image loaded from the API is responsive */
+.post-detail-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Add some styling to images */
+}
+
+/* Styling for tables that might be in the post content */
+.post-detail-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.post-detail-container th,
+.post-detail-container td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.post-detail-container th {
+    background-color: #f2f2f2;
+}
+
+/* Original card styles from previous attempt - might still be useful if some content uses them */
+.post-detail-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post-detail-section-header-maroon {
+    display: flex;
+    background-color: #800000;
+    color: white;
+    padding: 10px;
+}
+
+.post-detail-section-col {
+    flex: 1;
+    padding: 10px;
+}
+
+.post-detail-section-content {
+    display: flex;
+    padding: 10px;
+}
+
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+    .post-detail-header h1 {
+        font-size: 1.8em;
+    }
+
+    /* Force flexbox-based columns to stack */
+    .post-detail-section-content,
+    .post-detail-section-header-maroon {
+        flex-direction: column;
+    }
+
+    /* Responsive table styles */
+    .post-detail-container table, 
+    .post-detail-container thead, 
+    .post-detail-container tbody, 
+    .post-detail-container th, 
+    .post-detail-container td, 
+    .post-detail-container tr {
+        display: block; /* Turn the table into a stack of blocks */
+    }
+
+    .post-detail-container thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; /* Hide the table header */
+    }
+
+    .post-detail-container tr {
+        border: 1px solid #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-detail-container td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; /* Make space for the data label */
+    }
+
+    .post-detail-container td:before {
+        /* Add the table header as a label before the data */
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        /* This part is tricky as we can't easily get the header text. This is a common limitation of this technique. */
+        /* A better solution would be to have properly structured HTML from the start. */
+    }
+}

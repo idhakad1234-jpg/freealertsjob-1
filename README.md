@@ -1,2 +1,1 @@
-# freealertsjob-1
-Job Alerts
+A simple HTML/JS/CSS starter template
